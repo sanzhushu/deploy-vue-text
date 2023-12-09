@@ -49,7 +49,7 @@
           <span class="mr-2">{{ user?.data?.profile?.followeds }}粉丝</span>
           <span class="mr-2">Lv.{{ level?.data?.data?.level }}</span>
           <span class="mr-2"
-            >时长{{ level.data.data.progress.toFixed(2) }}</span
+            >时长{{ level?.data?.data?.progress.toFixed(2) }}</span
           >
         </div>
         <div
