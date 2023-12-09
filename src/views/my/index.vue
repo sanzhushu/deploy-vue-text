@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#F1F1F1] dark:bg-[#0a0a0a] pb-[14vw]">
+  <div class="bg-[#F1F1F1] dark:bg-[#0a0a0a] pb-[14vw]" v-if="user?.data?.profile">
     <div
       :style="{ backgroundImage: `url(${bg})`, backgroundSize: 100 + '%' }"
       class="pb-10 h-[80vw]"
@@ -27,14 +27,14 @@
       >
         <div class="w-[18vw] relative top-[-8vw] m-auto">
           <img
-            :src="user.data.profile.avatarUrl"
+            :src="user?.data?.profile?.avatarUrl"
             alt=""
             class="rounded-[50%]"
           />
         </div>
         <div class="flex justify-center items-center mt-[-6vw]">
           <span class="text-[4vw] dark:text-white text-black font-bold">{{
-            user.data.profile.nickname
+            user?.data?.profile?.nickname
           }}</span>
           <span
             class="ml-[2vw] bg-red-300 flex items-center h-[5vw] rounded-[2.5vw] pl-[1vw] pr-[1vw] text-[2vw]"
@@ -45,9 +45,9 @@
           /></span>
         </div>
         <div class="flex justify-center text-[3vw] text-[#9498a2] pt-2">
-          <span class="mr-2">{{ user.data.profile.newFollows }}关注</span>
-          <span class="mr-2">{{ user.data.profile.followeds }}粉丝</span>
-          <span class="mr-2">Lv.{{ level.data.data.level }}</span>
+          <span class="mr-2">{{ user?.data?.profile?.newFollows }}关注</span>
+          <span class="mr-2">{{ user?.data?.profile?.followeds }}粉丝</span>
+          <span class="mr-2">Lv.{{ level?.data?.data?.level }}</span>
           <span class="mr-2"
             >时长{{ level.data.data.progress.toFixed(2) }}</span
           >
@@ -323,7 +323,7 @@ export default {
     },
   },
   created() {
-    this.bg = this.user.data.profile.backgroundUrl;
+    this.bg = this.user.data?.profile?.backgroundUrl;
     this.$store.dispatch("requestgetMy");
     this.$store.dispatch("reqeastgetUserLevel");
     this.$store.dispatch("requestgetLike");
