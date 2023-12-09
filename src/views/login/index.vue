@@ -104,7 +104,7 @@ export default {
   data() {
     return {
       phone: "18672851882",
-      flay: false,
+      flay: true,
       captcha: "",
       show: false,
       value: "",
