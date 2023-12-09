@@ -223,11 +223,11 @@
             <ul class="pb-4">
               <li
                 class="w-[80vw] m-auto mt-2 bg-green flex"
-                v-for="(item, index) in music.data.playlist"
+                v-for="(item, index) in music?.data?.playlist"
                 :key="index"
               >
                 <div
-                  v-if="(index > 0) & item.subscribed"
+                  v-if="(index > 0) & item?.subscribed"
                   class="w-[80vw] bg-green flex"
                 >
                   <img
@@ -239,12 +239,12 @@
                     <h4
                       class="dark:text-[#DFDFDF]  w-[100%] text-[3.8vw] text-[#3f4659] line-clamp-1"
                     >
-                      {{ item.name }}
+                      {{ item?.name }}
                     </h4>
                     <p
                       class="dark:text-[#B7B7B7] w-[100%] text-[2.8vw] text-[#aaadb5] line-clamp-1"
                     >
-                      {{ item.trackCount }}首，播放0次
+                      {{ item?.trackCount }}首，播放0次
                     </p>
                   </div>
                 </div>

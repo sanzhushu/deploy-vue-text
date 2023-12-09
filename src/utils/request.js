@@ -13,26 +13,26 @@ axiosRetry(axios, { retries: 3 });
 
 // 每一次请求都会触发的函数如何去设置(请求拦截器)
 // 如何设置请求拦截器?
-request.interceptors.request.use((config) => {
-  const cookie = store.state.auth.data.cookie;
-  // console.log(store.state.auth.data.cookie);
-  if (cookie) {
-    if(config.method === 'post') {
-      config.data||(config.data={});
-      config.data.cookie = cookie
-    }
-    if(config.method === 'get') {
-      config.params||(config.params={});
-      config.params.cookie = cookie
-    }
-  }
+// request.interceptors.request.use((config) => {
+//   const cookie = store.state.auth.data.cookie;
+//   // console.log(store.state.auth.data.cookie);
+//   if (cookie) {
+//     if(config.method === 'post') {
+//       config.data||(config.data={});
+//       config.data.cookie = cookie
+//     }
+//     if(config.method === 'get') {
+//       config.params||(config.params={});
+//       config.params.cookie = cookie
+//     }
+//   }
   
-  // 在这个位置可以对请求配置作更改
-  // config是你每一次发起请求的详细配置(请求的地址、请求的路径、请求的参数... )
-  return config;
-});
+//   // 在这个位置可以对请求配置作更改
+//   // config是你每一次发起请求的详细配置(请求的地址、请求的路径、请求的参数... )
+//   return config;
+// });
 
-window.request = request;
+// window.request = request;
 export default request;
 //  _axios 和axiso的百分之99 的功能一致
 
