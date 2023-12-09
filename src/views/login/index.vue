@@ -82,7 +82,7 @@
       </template>
        </van-nav-bar>
       <van-index-bar :index-list="indexList" >
-        <div  v-for="(item, index) in CodeList.data.data"
+        <div  v-for="(item, index) in CodeList?.data?.data"
           :key="index">
           <van-index-anchor :index="item.label"
           :sticky-offset-top="10"
