@@ -13,7 +13,7 @@
           <div
             class="h-[16vw] flex justify-between items-center dark:bg-black dark:text-[#fff]"
           >
-            <div v-if="auth.data.account.anonimousUser">
+            <div v-if="auth?.data?.account?.anonimousUser">
               <span @click="dengru">立即登入</span>
             </div>
             <div v-else class="flex items-center">
