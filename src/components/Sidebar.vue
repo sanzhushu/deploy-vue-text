@@ -18,10 +18,10 @@
             </div>
             <div v-else class="flex items-center">
               <img
-                :src="auth.data.profile.avatarUrl"
+                :src="auth?.data?.profile?.avatarUrl"
                 alt=""
                 class="w-[7vw] h-[7vw] rounded-[50%] ml-[2vw] mr-[2vw]"
-              /><span>{{ auth.data.profile.nickname }}</span
+              /><span>{{ auth?.data?.profile?.nickname }}</span
               ><span>
                 <Icon icon="ri:arrow-right-s-line" />
               </span>
