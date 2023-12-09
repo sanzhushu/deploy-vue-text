@@ -10,7 +10,7 @@
         <van-tab v-for="(items, index) in arr" :key="index" :title="items" >
           <ul class="w-[89vw] m-auto">
             <li
-              v-for="(item, index) in mv.data.data"
+              v-for="(item, index) in mv?.data?.data"
               :key="index"
               class="mt-[3vw]"
               @click="toMv(item.id)"
