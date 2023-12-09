@@ -1,5 +1,5 @@
 import axios from "axios";
-import store from "@/store";
+// import store from "@/store";
 // axios.create 返回值是一个新的axios的实例
 import axiosRetry from "axios-retry";
 
@@ -32,7 +32,7 @@ axiosRetry(axios, { retries: 3 });
 //   return config;
 // });
 
-// window.request = request;
+window.request = request;
 export default request;
 //  _axios 和axiso的百分之99 的功能一致
 
