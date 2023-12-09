@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="playlist">
     <div v-if="see">
       <div :style="{ backgroundColor: color }" class="relative">
         <van-sticky>
