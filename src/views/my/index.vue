@@ -114,9 +114,9 @@
                     我的喜欢
                   </h3>
                   <p
-                    class="dark:text-[#232223] text-[3.5vw] text-[#232223] pl-[1.7vw] dark:text-[#DFDFDF]"
+                    class="text-[3.5vw] text-[#232223] pl-[1.7vw] dark:text-[#DFDFDF]"
                   >
-                    {{ music.data.playlist[0].trackCount }}首
+                    {{ music?.data?.playlist[0]?.trackCount }}首
                   </p>
                 </div>
                 <div
@@ -137,7 +137,7 @@
                   <p
                     class="dark:text-[#DFDFDF] text-[3.5vw] text-[#232223] pl-[1.7vw]"
                   >
-                    {{ level.data.data.nowPlayCount }}首
+                    {{ level?.data?.data?.nowPlayCount }}首
                   </p>
                 </div>
                 <div
@@ -182,11 +182,11 @@
             <ul class="pb-4">
               <li
                 class="w-[80vw] m-auto mt-2 bg-green flex"
-                v-for="(item, index) in music.data.playlist"
+                v-for="(item, index) in music?.data?.playlist"
                 :key="index"
               >
                 <div
-                  v-if="(index > 0) & !item.subscribed"
+                  v-if="(index > 0) & !item?.subscribed"
                   class="w-[80vw] bg-green flex"
                 >
                   <img
@@ -198,12 +198,12 @@
                     <h4
                       class="dark:text-[#DFDFDF]  w-[100%] text-[3.8vw] text-[#3f4659] line-clamp-1"
                     >
-                      {{ item.name }}
+                      {{ item?.name }}
                     </h4>
                     <p
                       class="dark:text-[#B7B7B7] w-[100%] text-[2.8vw] text-[#aaadb5] line-clamp-1"
                     >
-                      {{ item.trackCount }}首，播放0次
+                      {{ item?.trackCount }}首，播放0次
                     </p>
                   </div>
                 </div>
@@ -312,12 +312,12 @@ export default {
   computed: {
     ...mapState(["user", "level", "music"]),
     num() {
-      return this.music.data.playlist.filter(
+      return this.music?.data?.playlist.filter(
         (item, index) => (index > 0) & !item.subscribed
       ).length;
     },
     numone() {
-      return this.music.data.playlist.filter(
+      return this.music?.data?.playlist.filter(
         (item, index) => (index > 0) & item.subscribed
       ).length;
     },
