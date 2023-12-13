@@ -44,11 +44,6 @@ const routes = [
     name: "mvvideo",
     component: () => import("../views/ranking/children/MvVideo"),
   },
-  {
-    path:'/audio',
-    name:'audio',
-    component:()=>import('@/components/AudioPlayer/AudioPlayerone')
-  }
 ];
 
 export default routes;

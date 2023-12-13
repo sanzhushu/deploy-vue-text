@@ -9,7 +9,7 @@
         <span><Icon icon="mingcute:more-2-fill" /></span>
       </div>
     </div>
-    <div class="mt-[18vw] " >
+    <div class="mt-[18vw]">
       <video id="player" ref="player">
         <source :src="url" type="video/mp4" />
       </video>
@@ -18,7 +18,7 @@
       <div class="flex flex-col justify-end">
         <div class="w-[80vw] flex flex-col justify-end" style="">
           <div style="transition: all 5s">
-            <div class="flex items-center h-[10vw]  mb-[-2vw] z-50">
+            <div class="flex items-center h-[10vw] mb-[-2vw] z-50">
               <img
                 :src="detail.cover"
                 alt="111"
@@ -98,9 +98,13 @@
           ><span class="text-[3vw] mt-[2vw]">收藏</span>
         </li>
         <li class="flex items-end mb-[4vw]">
-          <span
-            class="text-[6vw] h-[7vw] w-[7vw] bg-slate-100 rounded-[50%]"
-          ></span>
+          <span>
+            <img
+              :src="detail.cover"
+              alt="111"
+              class="w-[8vw] h-[8vw] rounded-[50%]"
+            />
+          </span>
         </li>
       </ul>
     </div>
@@ -134,7 +138,7 @@ export default {
       detail: [],
       shu: false,
       playervideo: null,
-      suspend:false,
+      suspend: false,
     };
   },
   computed: {
@@ -161,23 +165,21 @@ export default {
     }
     {
       this.playervideo = new Plyr(this.$refs.player, {
-        controls: ['progress','play-large'],
+        controls: ["progress", "play-large"],
         muted: "false",
         autoplay: true,
-        hideControls:false,
+        hideControls: false,
       });
     }
   },
-  mounted() {
-    
-  },
+  mounted() {},
   updated() {
     this.shu = true;
   },
   methods: {
     tuigo() {
       this.$router.go(-1);
-    }
+    },
   },
 };
 </script>
@@ -185,6 +187,9 @@ export default {
 <style>
 .plyr__control--overlaid {
   --plyr-color-main: rgb(205, 206, 209);
+}
+.plyr__progress {
+  --plyr-color-main: red !important;
 }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -226,7 +231,7 @@ input[type="range"]::-webkit-slider-thumb {
 .van-cell {
   position: static !important;
 }
-.plyr__controls{
+.plyr__controls {
   position: fixed !important;
   bottom: 14vw !important;
 }

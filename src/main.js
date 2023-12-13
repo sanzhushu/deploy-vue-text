@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-
+import * as Sentry from "@sentry/vue";
 
 import router  from './router'
 import store from './store'
@@ -44,6 +44,22 @@ import VueRouter  from 'vue-router'
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location) {return originalPush.call(this, location).catch(err => err)
 }
+
+Sentry.init({
+  Vue,
+  dsn: "https://181e840193882cb387d1a95c40cc991d@o4506386935185409.ingest.sentry.io/4506387406061568",
+  
+  integrations: [
+    new Sentry.BrowserTracing({
+      routingInstrumentation: Sentry.vueRouterInstrumentation(router),
+      tracePropagationTargets: [],
+    }),
+  ],
+
+  tracesSampleRate: 1.0, 
+  replaysSessionSampleRate: 0.1, 
+  replaysOnErrorSampleRate: 1.0, 
+});
 
 new Vue({
   render: h => h(App),

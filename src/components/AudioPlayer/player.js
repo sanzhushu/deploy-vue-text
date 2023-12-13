@@ -16,7 +16,7 @@ export default class {
     this.tracks = [];
     this.howl = null;
     // 0代表列表循环 1代表单曲循环
-    this.loopMode = 0;
+    this.loopMode = 1;
     this.currentSong = {};
     this.shows= false;
   }

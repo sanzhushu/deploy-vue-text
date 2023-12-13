@@ -16,7 +16,7 @@
             <div v-if="auth?.data?.account?.anonimousUser">
               <span @click="dengru">立即登入</span>
             </div>
-            <div v-else class="flex items-center">
+            <div v-else class="flex items-center" @click="gomy">
               <img
                 :src="auth?.data?.profile?.avatarUrl"
                 alt=""
@@ -700,6 +700,9 @@ export default {
           console.log("取消了");
         });
     },
+    gomy(){
+      this.$router.push("/my");
+    }
   },
 };
 </script>

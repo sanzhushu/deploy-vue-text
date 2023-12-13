@@ -2,8 +2,8 @@
   <div>
     <Card :title="resource.uiElement.subTitle.title">
     <Level>
-      <ul class=" list-none w-[190vw] flex flex-nowrap ">
-        <li class="w-[35vw] h-[36vw] ml-3" v-for="(item,index) in resource.creatives" :key="index">
+      <ul class=" list-none w-[190vw] flex flex-nowrap pt-2">
+        <li class="w-[35vw] h-[36vw] ml-3" v-for="(item,index) in resource.creatives" :key="index" @click="song(item.creativeId)" >
           <div class="h-[27vw] relative">
             <img :src="item.resources[0].uiElement.image.imageUrl" alt="" class="h-[27vw] w-[35vw] rounded-[3vw]">
             <p class=" absolute top-1 right-1 flex justify-center items-center text-[3vw] font-bold text-[#fff]">
@@ -29,7 +29,7 @@ export default {
     },
   },
   created(){
-    // console.log(this.resource);
+    console.log(this.resource.uiElement.subTitle.title);
   },
   methods: {
     formatNumber(num) {
@@ -40,6 +40,11 @@ export default {
         return (num / 100000000).toFixed(0) + "亿";
       }
     },
+    song(id){
+      console.log(id);
+      // this.$store.commit("updataPlaylistID", id);
+      // this.$router.push("/playlist");
+    }
   },
 }
 </script>

@@ -1,16 +1,14 @@
 <template>
   <div class="fixed bottom-0">
     <div
-      class="h-[12.5vw] w-[100vw] flex items-center justify-between dark:bg-black bg-white"
+      class="h-[12.5vw] dark:text-[#fff] w-[100vw] flex items-center justify-between dark:bg-black bg-white"
     >
       <div class="flex items-center justify-center">
         <div
           class="flex items-center w-[12vw] h-[12vw] ml-[5vw]"
           @click="signal"
         >
-          <div
-            class="w-[10vw] h-[10vw] absolute "
-          >
+          <div class="w-[10vw] h-[10vw] absolute">
             <div class="absolute w-[10vw] h-[10vw]">
               <img
                 src="https://admirable-jalebi-ce44af.netlify.app/static/d7e4e3a244701ee85fecb5d4f6b5bd57.png"
@@ -26,7 +24,7 @@
             <img
               :src="mixin_player.currentSong.al?.picUrl"
               alt=""
-              class="w-[10vw] h-[10vw] absolute  rounded-[50%] border-[5px] border-[#000]"
+              class="w-[10vw] h-[10vw] absolute rounded-[50%] border-[5px] border-[#000]"
               :class="[{ rotateAnimation1: mixin_player.playing }]"
             />
           </div>
@@ -42,10 +40,10 @@
         >
           <van-circle
             :speed="100"
-            :value="mixin_player.progress * 100"
+            :value="mixin_player?.progress * 100"
             size="25px"
           />
-          <span class="text-[2vw] absolute top-[] text-black">
+          <span class="text-[2vw] absolute top-[] text-black dark:text-[#fff]">
             <Icon
               :icon="
                 mixin_player.playing
@@ -119,7 +117,7 @@
     <van-popup
       v-model="mixin_player.shows"
       position="bottom"
-      :style="{ height: '100%' }"
+      :style="{ height: '100vh' }"
       get-container="body"
       class=""
       v-if="mixin_player.shows"
@@ -170,7 +168,7 @@
               src="https://admirable-jalebi-ce44af.netlify.app/static/needle-ab.png"
               alt=""
               class="h-[40vw] absolute top-[-3.2vw] left-[-3.2vw]"
-              style="transition: all 3s; transform: rotate(-45deg)"
+              style="transition: all 1s; transform: rotate(-45deg)"
               :style="[
                 { 'transform-origin': 'left top' },
                 {
@@ -199,12 +197,12 @@
             <img
               :src="mixin_player.currentSong.al?.picUrl"
               alt=""
-              class="w-[50vw] h-[50vw] absolute top-[15vw] left-[15vw] rounded-[50%] border-[5px] border-[#000]"
-              :class="[{ rotateAnimation1: mixin_player.playing }]"
+              class="w-[50vw] h-[50vw] absolute top-[15vw] left-[15vw] rounded-[50%] border-[5px] border-[#000] rotateAnimation1"
+              :class="[{ 'paused-animation': !mixin_player.playing }]"
             />
           </div>
         </div>
-        <div class="flex flex-wrap content-end">
+        <div class="flex flex-wrap content-end fixed bottom-4">
           <div class="w-[100vw] mt-[5vw] flex justify-evenly items-center">
             <div>
               <Icon
@@ -230,49 +228,17 @@
             />
           </div>
           <div class="h-[8vw] w-[100vw] flex items-center px-[5vw] mt-[3vw]">
-            <div class="text-[#fff] text-[1.6vw] scale-[0.8] opacity-80">
-              00:00
+            <div class="text-[#fff] text-[2.6vw] scale-[0.8] opacity-80">
+              {{ mixin_player.howl.seek().toFixed(2) }}
             </div>
-            <div
-              class="flex-1 mx-[2.5vw] vue-slider vue-slider-ltr"
-              style="padding: 7px 0px; width: auto; height: 4px"
-            >
-              <div class="vue-slider-rail">
-                <div
-                  class="vue-slider-process"
-                  style="
-                    height: 100%;
-                    top: 0px;
-                    left: 0%;
-                    width: 0.0636773%;
-                    transition-property: width, left;
-                    transition-duration: 0s;
-                  "
-                ></div>
-                <div
-                  aria-valuetext="0.217458"
-                  class="vue-slider-dot"
-                  role="slider"
-                  aria-valuenow="0.217458"
-                  aria-valuemin="0"
-                  aria-valuemax="341.5"
-                  aria-orientation="horizontal"
-                  tabindex="0"
-                  style="
-                    width: 14px;
-                    height: 14px;
-                    transform: translate(-50%, -50%);
-                    top: 50%;
-                    left: 0.0636773%;
-                    transition: left 0s ease 0s;
-                  "
-                >
-                  <div class="vue-slider-dot-handle"></div>
-                </div>
-              </div>
+            <div class="flex-1 mx-[2.5vw]" style="width: auto; height: 4px">
+              <vue-slider
+                class="mt-[-2vw]"
+                :value="mixin_player?.progress * 100"
+              ></vue-slider>
             </div>
-            <div class="text-[#fff] text-[1.6vw] scale-[0.8] opacity-50">
-              05:41
+            <div class="text-[#fff] text-[2.6vw] scale-[0.8] opacity-50">
+              {{ mixin_player.howl.duration().toFixed(2) }}
             </div>
           </div>
           <div class="h-[12.3vw] flex w-[100vw] items-center justify-evenly">
@@ -296,10 +262,13 @@
                   "
               /></span>
             </div>
-            <Icon
-              icon="mynaui:skip-forward"
-              class="text-[#fff] iconify iconify--fluent"
-            />
+            <span @click="nextSong">
+              <Icon
+                icon="mynaui:skip-forward"
+                class="text-[#fff] iconify iconify--fluent"
+              />
+            </span>
+
             <span @click="showPopup">
               <Icon
                 icon="icon-park-outline:more-app"
@@ -314,6 +283,8 @@
 </template>
 
 <script>
+import VueSlider from "vue-slider-component";
+import "vue-slider-component/theme/default.css";
 export default {
   name: "AudioPlayer",
   data() {
@@ -324,6 +295,9 @@ export default {
       tracks: [],
       // backgroundImages: "",
     };
+  },
+  components: {
+    VueSlider,
   },
   computed: {
     playlist: {
@@ -352,6 +326,10 @@ export default {
     signal() {
       this.mixin_player.shows = true;
       console.log(this.mixin_player.shows);
+    },
+    nextSong() {
+      console.log(111);
+      this.mixin_player.playNextTrack();
     },
   },
   created() {
@@ -396,7 +374,7 @@ export default {
 }
 .rotateAnimation1 {
   animation: rotate 10s linear infinite;
-  animation-delay: 2s;
+  /* animation-delay: 2s; */
 }
 
 @keyframes rotate {
@@ -420,4 +398,8 @@ export default {
     transform: rotate(360deg);
   }
 }
+.paused-animation {
+  animation-play-state: paused;
+}
+
 </style>

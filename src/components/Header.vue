@@ -8,7 +8,7 @@
     <div class="relative">
       <Icon
         icon="mingcute:search-line"
-        class="absolute left-[3vw] top-[3vw] w-[4.47vw] h-[4.47vw] leading-[4.47vw] text-[#e2e3e5] iconify iconify--tabler"
+        class="absolute left-[3vw] top-[3vw] w-[4.47vw] h-[4.47vw] leading-[4.47vw] text-[#e2e3e5] iconify iconify--tabler dark:text-[#fff]"
       ></Icon>
       <input
         type="text"

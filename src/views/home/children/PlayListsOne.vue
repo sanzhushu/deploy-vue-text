@@ -1,5 +1,5 @@
 <template>
-  <div v-if="playlist">
+  <div v-if="playlist" class="pb-[10vw]">
     <div v-if="see">
       <div :style="{ backgroundColor: color }" class="relative">
         <van-sticky>
@@ -9,13 +9,13 @@
               class="h-[12vw] flex justify-between items-center"
             >
               <div class="flex items-center">
-                <span @click="goBack" class="text-[5vw]"
+                <span @click="goBack" class="text-[5vw] ml-[3vw]"
                   ><Icon icon="iconamoon:arrow-left-1-bold"
                 /></span>
                 <div class="h-[12vw] overflow-hidden">
                   <div
                     :class="{ tran: big1}"
-                    class="shang h-[12vw] miao text-[4vw] font-bold leading-[12vw]"
+                    class="shang h-[12vw] miao text-[4vw] font-bold leading-[12vw] ml-[4vw]"
                   >
                     歌单
                   </div>
@@ -141,7 +141,7 @@
                         class="rounded-[2vw] h-[30vw] w-[30vw]"
                       />
                       <p
-                        class="absolute top-1 right-1 flex justify-center items-center rounded-[5vw] font-bold text-white"
+                        class="absolute top-1 right-1 flex justify-center items-center rounded-[5vw]  text-white font-[800] text-[2.5vw]"
                       >
                         <Icon icon="iconamoon:arrow-right-2-fill" />
                         {{ formatNumber(iten1.id) }}
@@ -245,7 +245,7 @@ export default {
       prove: true,
       big: true,
       big1:true,
-      color: "#F1F1F1",
+      color: "red",
       proves: false,
       bigs: true,
       song1:'',
@@ -375,7 +375,7 @@ export default {
   text-overflow: ellipsis; /*省略号*/
 }
 .miao {
-  transition: all 3s;
+  transition: all 1s;
 }
 .shang1 {
   transform: translateY(100%);
@@ -391,6 +391,6 @@ export default {
 }
 .tran1 {
   transform: translateY(0%);
-  margin-top: -10vw;
+  margin-top: -11vw;
 }
 </style>

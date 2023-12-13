@@ -184,7 +184,7 @@ export default {
       this.show = false;
     },
     gohome(){
-      this.$router.push('/')
+      this.$router.push('/home')
     },
     onClickLeft(){
       this.show = false

@@ -39,7 +39,7 @@
                   class="rounded-[2vw] h-[31vw] w-[31vw]"
                 />
                 <p
-                  class="absolute top-1 right-1 flex justify-center items-center rounded-[5vw] font-bold text-white"
+                  class="absolute top-1 right-1 flex justify-center items-center rounded-[5vw]  text-white font-[800] text-[2.5vw]"
                 >
                   <Icon icon="iconamoon:arrow-right-2-fill" />
                   {{
