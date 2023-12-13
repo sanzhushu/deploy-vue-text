@@ -233,9 +233,19 @@
             </div>
             <div class="flex-1 mx-[2.5vw]" style="width: auto; height: 4px">
               <vue-slider
-                class="mt-[-2vw]"
-                :value="mixin_player?.progress * 100"
-              ></vue-slider>
+                @change="fn(mixin_player.currentplaytime)"
+                :tooltip="'none'"
+                :drag-on-click="true"
+                :lazy="true"
+                v-model="mixin_player.currentplaytime"
+                :silent="true"
+                :min="0"
+                :max="mixin_player.howl.duration()"
+                :interval="0.01"
+                :disabled="false"
+                :dragOnClick="true"
+              >
+              </vue-slider>
             </div>
             <div class="text-[#fff] text-[2.6vw] scale-[0.8] opacity-50">
               {{ mixin_player.howl.duration().toFixed(2) }}
@@ -331,6 +341,10 @@ export default {
       console.log(111);
       this.mixin_player.playNextTrack();
     },
+    fn(value){
+      // console.log(value);
+      this.mixin_player.howl.seek(value)
+    }
   },
   created() {
     this.music = this.playlist.data.playlist.tracks;
@@ -401,5 +415,4 @@ export default {
 .paused-animation {
   animation-play-state: paused;
 }
-
 </style>

@@ -19,12 +19,14 @@ export default class {
     this.loopMode = 1;
     this.currentSong = {};
     this.shows= false;
+    this.currentplaytime = 0;
   }
   // 进度条
   interval(){
     clearInterval(timer)
     setInterval(()=>{
       this.progress = this.howl.seek()/this.howl.duration()
+      this.currentplaytime = this.howl.seek();
     }, 1000)
   }
   //替换播放歌单
