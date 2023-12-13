@@ -244,6 +244,7 @@
                 :interval="0.01"
                 :disabled="false"
                 :dragOnClick="true"
+                class="mt-[-2vw]"
               >
               </vue-slider>
             </div>
